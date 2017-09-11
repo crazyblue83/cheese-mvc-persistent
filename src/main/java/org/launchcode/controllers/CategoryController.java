@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -22,10 +23,10 @@ public class CategoryController {
     private CategoryDao categoryDao;
 
     @RequestMapping(value = "")
-    public String index(Model model) {
+    public String index(Model model, @RequestParam(defaultValue = "0") int id) {
 
-        model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("title", "Categories");
+        model.addAttribute("categories", categoryDao.findAll());
 
         return "category/index";
     }
@@ -43,7 +44,7 @@ public class CategoryController {
     public String add(Model model, @ModelAttribute @Valid Category category, Errors errors) {
 
         if (errors.hasErrors()) {
-            model.addAttribute(category);
+            model.addAttribute("title", "Add Category");
             return "category/add";
 
         } else {
