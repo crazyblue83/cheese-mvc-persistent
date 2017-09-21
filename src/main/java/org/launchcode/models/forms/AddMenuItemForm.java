@@ -17,7 +17,7 @@ public class AddMenuItemForm {
 
     private Menu menu;
 
-    public AddMenuItemForm() { }
+    public AddMenuItemForm() {}
 
     public AddMenuItemForm(Iterable<Cheese> cheeses, Menu menu) {
         this.cheeses = cheeses;
@@ -43,10 +43,6 @@ public class AddMenuItemForm {
 
     public Iterable<Cheese> getCheeses() {
         return cheeses;
-    }
-
-    public void setCheeses(Iterable<Cheese> cheeses) {
-        this.cheeses = cheeses;
     }
 
     public Menu getMenu() {
